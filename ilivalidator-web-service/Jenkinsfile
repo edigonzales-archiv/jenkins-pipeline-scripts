@@ -8,7 +8,8 @@ pipeline {
             steps {
 
                 echo "Descargando fuentes"
-                checkout scm
+                //checkout scm // not working with "Build now"?
+                git "https://github.com/edigonzales/ilivalidator-web-service.git/"
 
                 //echo "Construyendo el proyecto con Gradle Wrapper"
                 //sh './gradlew build -x test'
