@@ -4,11 +4,12 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('Checkout') {
             steps {
 
-                echo "Descargando fuentes"
-                //checkout scm // not working with "Build now"?
+                echo "Checkout sources"
+                //checkout scm // not working with "Build now"? -> he checkout step will checkout code from source control; scm is a special variable which instructs the checkout step to clone the specific revision which triggered this Pipeline run.
+
                 git "https://github.com/edigonzales/ilivalidator-web-service.git/"
 
                 //echo "Construyendo el proyecto con Gradle Wrapper"
@@ -17,6 +18,15 @@ pipeline {
                 //archive 'build/libs/*.jar'
             }
         }
+        stage('Build') {
+            steps {
+                echo "Construyendo el proyecto con Gradle Wrapper"
+                sh './gradlew build -x test'
+
+                //archive 'build/libs/*.jar'
+            }
+        }
+        
         stage('Test') {
             steps {
                 echo 'Testing..'
