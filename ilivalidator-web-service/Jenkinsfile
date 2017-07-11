@@ -33,7 +33,7 @@ pipeline {
                 sh "./gradlew clean test"
 
                 publishHTML target: [
-                    reportName : 'Serenity',
+                    reportName : 'Gradle Tests',
                     reportDir:   'build/reports/tests/test',
                     reportFiles: 'index.html',
                     keepAll:     true,
