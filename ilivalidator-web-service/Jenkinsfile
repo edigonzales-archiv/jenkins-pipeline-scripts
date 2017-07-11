@@ -21,9 +21,9 @@ pipeline {
         stage('Build') {
             steps {
                 echo "Construyendo el proyecto con Gradle Wrapper"
-                sh './gradlew build -x test'
+                sh "./gradlew build -x test"
 
-                //archive 'build/libs/*.jar'
+                archiveArtifacts artifacts: "build/libs/*.jar", fingerprint: true
             }
         }
         
