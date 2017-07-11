@@ -8,9 +8,9 @@ pipeline {
             node {
 
                 echo "Descargando fuentes"
-                checkout scm
+                //checkout scm
 
-                echo "Construyendo el proyecto con Gradle Wrapper"
+                //echo "Construyendo el proyecto con Gradle Wrapper"
                 //sh './gradlew build -x test'
 
                 //archive 'build/libs/*.jar'
